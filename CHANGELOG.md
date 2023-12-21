@@ -1,3 +1,6 @@
+## 1.0.4
+* Pass "flags" to SDK
+
 ## 1.0.3
 
 * Infinite loop fix
