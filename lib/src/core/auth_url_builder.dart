@@ -39,6 +39,9 @@ class AuthUrlBuilder {
   /// with a specific **VIN**.
   final String? vin;
 
+  // Dictionary of feature flags that your application has early access to.
+  final List<String>? flags;
+
   /// A class used for generating Smartcar Connect authorization URLs.
   const AuthUrlBuilder({
     this.forcePrompt = false,
@@ -46,6 +49,7 @@ class AuthUrlBuilder {
     this.state,
     this.make,
     this.vin,
+    this.flags,
   });
 
   Map<String, dynamic> toMap() {
@@ -55,15 +59,22 @@ class AuthUrlBuilder {
       "state": state,
       "make": make,
       "vin": vin,
+      "flags": flags,
     };
   }
 
   @override
   String toString() =>
-      "SmartcarConfig(\nforcePrompt: $forcePrompt,\nsingleSelect: $singleSelect,\nstate: $state,\nmake: $make,\nvin: $vin\n)";
+      "SmartcarConfig(\nforcePrompt: $forcePrompt,\nsingleSelect: $singleSelect,\nstate: $state,\nmake: $make,\nvin: $vin\nflags: $flags\n)";
 
   @override
-  int get hashCode => forcePrompt.hashCode ^ singleSelect.hashCode ^ state.hashCode ^ make.hashCode ^ vin.hashCode;
+  int get hashCode =>
+      forcePrompt.hashCode ^
+      singleSelect.hashCode ^
+      state.hashCode ^
+      make.hashCode ^
+      vin.hashCode ^
+      flags.hashCode;
 
   @override
   bool operator ==(Object other) {
@@ -74,6 +85,7 @@ class AuthUrlBuilder {
         other.singleSelect == singleSelect &&
         other.state == state &&
         other.make == make &&
-        other.vin == vin;
+        other.vin == vin &&
+        other.flags == flags;
   }
 }

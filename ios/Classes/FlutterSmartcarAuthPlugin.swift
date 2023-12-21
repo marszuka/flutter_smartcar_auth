@@ -95,6 +95,10 @@ public class FlutterSmartcarAuthPlugin: NSObject, FlutterPlugin, FlutterStreamHa
           authUrl.setSingleSelectVin(vin: arguments["vin"] as! String)
         }
 
+        if (arguments.keys.contains("flags") && arguments["flags"] != nil && arguments["flags"] is [String]) {
+          authUrl.setFlags(arguments["flags"] as! [String])
+        }
+
         try self.smartcarAuth!.launchAuthFlow(url: authUrl.build())
 
         result(nil)
