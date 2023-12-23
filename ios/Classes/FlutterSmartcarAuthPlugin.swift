@@ -96,7 +96,7 @@ public class FlutterSmartcarAuthPlugin: NSObject, FlutterPlugin, FlutterStreamHa
         }
 
         if (arguments.keys.contains("flags") && arguments["flags"] != nil && arguments["flags"] is [String]) {
-          authUrl.setFlags(arguments["flags"] as! [String])
+          authUrl.setFlags(flags: arguments["flags"] as! [String])
         }
 
         try self.smartcarAuth!.launchAuthFlow(url: authUrl.build())
